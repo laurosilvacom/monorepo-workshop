@@ -1,6 +1,6 @@
 ## Understanding the Newsletter Subscription Code
 
-This code is a part of a newsletter subscription feature in a web application. It's written in TypeScript and uses React for the frontend and an API endpoint for the backend. Let's break it down.
+This code is part of a newsletter subscription feature in the shared packaged that we'll use across multiple applications in our monorepo. Let's break it down.
 
 ### Backend: API Endpoint
 
@@ -36,8 +36,8 @@ export async function POST(request) {
 
 When a POST request is made to this endpoint, it:
 
-1. Extracts the request body and destructures email, form_id, and api_key from it.
-2. Makes a POST request to the ConvertKit API to subscribe the user to a form (newsletter).
+1. Extracts the request body and destructures `email`, `form_id`, and `api_key` from it.
+2. Makes a `POST` request to the ConvertKit API to subscribe the user to a form (newsletter).
 3. If the response from ConvertKit is not OK, it throws an error with the message from the response.
 4. If the response is OK, it returns the data from the response.
 
@@ -73,8 +73,8 @@ const Newsletter = () => {
     const response = await fetch('/api/subscribe', {
       body: JSON.stringify({
         email: data.email,
-        form_id: '1554270',
-        api_key: '5ZOSTu6Ohef53IoaiTe4ew',
+        form_id: 'form_id',
+        api_key: 'api_key',
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -119,8 +119,9 @@ export default Newsletter
 
 When the form is submitted, it:
 
-1. Makes a POST request to the `/api/subscribe` endpoint with the email, form ID, and API key.
-2. If the response is OK, it sets a success message and resets the form.
-3. If the response is not OK, it sets an error message.
-   The form is rendered with a field for the email and a submit button. It uses react-hook-form for form handling and zod for form validation. The email field is validated to be a valid email address.
-   That's it! This is how the newsletter subscription feature works in this application.
+1. Makes a `POST` request to the `/api/subscribe` endpoint with the email, form ID, and API key.
+2. If the response is `OK`, it sets a success message and resets the form.
+3. If the response is not `OK`, it sets an error message.
+   The form is rendered with a field for the email and a submit button. It uses `react-hook-form` for form handling and `zod` for form validation. The email field is validated to be a valid email address.
+
+That's it! This is how the newsletter subscription feature works in this application.
