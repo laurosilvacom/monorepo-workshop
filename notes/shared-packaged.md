@@ -38,8 +38,8 @@ When a POST request is made to this endpoint, it:
 
 1. Extracts the request body and destructures `email`, `form_id`, and `api_key` from it.
 2. Makes a `POST` request to the ConvertKit API to subscribe the user to a form (newsletter).
-3. If the response from ConvertKit is not OK, it throws an error with the message from the response.
-4. If the response is OK, it returns the data from the response.
+3. If the response from ConvertKit is not `OK`, it throws an error with the message from the response.
+4. If the response is `OK`, it returns the data from the response.
 
 ### Frontend: Newsletter Component
 
