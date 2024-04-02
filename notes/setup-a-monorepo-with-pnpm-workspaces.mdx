@@ -5,3 +5,34 @@ Package managers like npm, pnpm, and yarn all have a feature known as "workspace
 This means you can have an application, a library, or even multiple libraries, and you can use them locally and reference them without having to go through a publishing step such as an npm registry. This is exactly what you need if you want to set up a monorepo.
 
 Today, we're going to focus on setting up a workspace with pnpm.
+
+First, let's start by creating a folder. We'll call it `pnpm`.
+
+```bash
+mkdir pnpm
+```
+
+## Monorepo Workspaces
+
+Monorepo workspaces often come in two different structures: app-centric and package-centric.
+
+1. App-centric setup: This structure usually has a folder named "apps" at the top level, followed by "packages". This is the structure we will be using today.
+
+2. Package-centric setup: This structure is often used by open-source frameworks like Vue.js, React.js, or Angular. It usually has a folder named "packages" where all the various packages live.
+
+You can use either structure or even mix them according to your project's needs.
+
+Let's go ahead and structure our monorepo workspace with an app-centric setup.
+
+```bash
+mkdir apps
+mkdir packages
+```
+
+In order to inform PNPM that we're setting up a workspace and not just using it for package installation, we need to create a pnpm-workspace.yaml file. This file is created at the root of the workspace and defines its structure.
+
+```bash
+touch pnpm-workspace.yaml
+```
+
+Next, we'll define the structure of our workspace in this file.
