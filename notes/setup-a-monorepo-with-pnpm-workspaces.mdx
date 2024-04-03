@@ -4,14 +4,6 @@ Package managers like npm, pnpm, and yarn all have a feature known as "workspace
 
 This means you can have an application, a library, or even multiple libraries, and you can use them locally and reference them without having to go through a publishing step such as an npm registry. This is exactly what you need if you want to set up a monorepo.
 
-Today, we're going to focus on setting up a workspace with pnpm.
-
-First, let's start by creating a folder. We'll call it `pnpm`.
-
-```bash
-mkdir pnpm
-```
-
 ## Monorepo Workspaces
 
 Monorepo workspaces often come in two different structures: app-centric and package-centric.
@@ -20,14 +12,43 @@ Monorepo workspaces often come in two different structures: app-centric and pack
 
 2. Package-centric setup: This structure is often used by open-source frameworks like Vue.js, React.js, or Angular. It usually has a folder named "packages" where all the various packages live.
 
-You can use either structure or even mix them according to your project's needs.
+Next, we'll define the structure of our workspace in this file.
 
-Let's go ahead and structure our monorepo workspace with an app-centric setup.
+## Steps
+
+1. Make sure you have pnpm installed: https://pnpm.io/installation
+
+2. Create an empty folder `mkdir monorepo-playground`
+
+3. Create a pnpm workspace https://pnpm.io/workspaces
+
+4. Create a package.json file with `pnpm init`
+
+```package.json
+{
+  "name": "monorepo-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+This is the package.json for our root-level tooling that we will need in our monorepo set up.
+
+5. Structure your monorepo workspace with an app-centric setup.
 
 ```bash
 mkdir apps
 mkdir packages
 ```
+
+6. Create an pnpm workspace for our application
 
 In order to inform PNPM that we're setting up a workspace and not just using it for package installation, we need to create a pnpm-workspace.yaml file. This file is created at the root of the workspace and defines its structure.
 
@@ -35,4 +56,159 @@ In order to inform PNPM that we're setting up a workspace and not just using it 
 touch pnpm-workspace.yaml
 ```
 
-Next, we'll define the structure of our workspace in this file.
+Note: `pnpm-workspace.yaml` defines the root of the workspace and enables you to include / exclude directories from the workspace. By default, all packages of all subdirectories are included.
+
+```yaml
+packages:
+  # all packages in direct subdirs of packages/
+  - 'packages/*'
+  # all packages in subdirs of components/
+  - 'components/**'
+  # exclude packages that are inside test directories
+  - '!**/test/**'
+```
+
+```yaml
+packages:
+  - 'apps/*'
+  - 'packages/*'
+```
+
+7. Add add Next.js application to a pnpm Workspace Monorepo
+
+```bash
+pnpx create-next-app@latest
+```
+
+Default options is fine!
+
+```bash
+✔ What is your project named? … website
+✔ Would you like to use TypeScript? … No / Yes
+✔ Would you like to use ESLint? … No / Yes
+✔ Would you like to use Tailwind CSS? … No / Yes
+✔ Would you like to use `src/` directory? … No / Yes
+✔ Would you like to use App Router? (recommended) … No / Yes
+✔ Would you like to customize the default import alias (@/*)? … No / Yes
+```
+
+> Execute binaries from npm packages using `pnpx` -> https://fig.io/manual/pnpx
+
+8. Run the scripts from `apps/website/package.json` within the workspace.
+
+```json
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "lint": "next lint"
+},
+```
+
+9. Run App Scripts From the Workspace Root
+
+pnpm's `--filter` flag allows you to restrict commands to specific subsets of packages https://pnpm.io/filtering
+
+Ensure that each of your app's have name set in their package.json file.
+
+```bash
+pnpm --filter website dev
+
+```
+
+10. Create private libraries in your monorepo
+
+Now create private libraries in your monorepo that you can share between your other packages and applications.
+
+```packages/shared-ui/package.json
+{
+  "private": "true",
+  "name": "shared-ui",
+  "version": "1.0.0",
+  "description": "Shared UI package for our monorepo playground",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}
+```
+
+Use pnpm filter commands to add external libraries to your package.
+
+```bash
+pnpm add --filter shared-ui react
+pnpm add --filter shared-ui -D typescript
+
+```
+
+Create an entry point and set the main field in your package.json to where your code will compile when built.
+
+```packages/shared-ui/button.tsx
+'use client'
+
+export const Button = ({}) => {
+  return <button onClick={() => alert(`Hello from your app!`)}>Click me 🏔️</button>
+}
+
+```
+
+```packages/shared-ui/index.tsx
+export * from './button'
+```
+
+```packages/shared-ui/tsconfig.json
+{
+  "compilerOptions": {
+    "strict": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noUnusedLocals": true,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "outDir": "./dist"
+  },
+  "include": ["."],
+  "exclude": ["dist", "node_modules", "**/*.spec.ts"]
+}
+
+```
+
+```packages/shared-ui/.eslintrc
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off"
+  }
+}
+```
+
+Make sure that the build command is working: `pnpm --filter shared-ui build`. You should see the output in the `packages/shared-ui/dist`.
+
+11. Use the private libraries in your monorepo
+
+Adding your local packages as dependencies in a pnpm worksapce mostly works the same way as adding external packages.
+
+```bash
+pnpm add shared-ui --filter website --workspace
+```
+
+- `pnpm`: This is the package manager you're using.
+- `add`: This is the command to add a new package to your project.
+- `shared-ui`: This is the name of the package you're adding. In this case, it's a local workspace package.
+- `--filter website`: This option tells pnpm to only operate on the 'website' package. So, it will only add the
+- `shared-ui` package to the 'website' package, not to any other packages in your workspace.
+- `--workspace`: This option tells pnpm to look for packages in the local workspace. So, it will find t
