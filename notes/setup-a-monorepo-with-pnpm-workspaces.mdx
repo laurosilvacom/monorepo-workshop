@@ -138,17 +138,15 @@ Use pnpm filter commands to add external libraries to your package.
 
 ```bash
 pnpm add --filter shared-ui react
-pnpm add --filter shared-ui -D typescript
+pnpm add --filter shared-ui -D typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
 
 ```
 
 Create an entry point and set the main field in your package.json to where your code will compile when built.
 
 ```packages/shared-ui/button.tsx
-'use client'
-
-export const Button = ({}) => {
-  return <button onClick={() => alert(`Hello from your app!`)}>Click me 🏔️</button>
+export const Button = ({onClick, children}) => {
+  return <button onClick={onClick}>{children}</button>
 }
 
 ```
@@ -159,27 +157,33 @@ export * from './button'
 
 ```packages/shared-ui/tsconfig.json
 {
-  "compilerOptions": {
-    "strict": true,
-    "strictNullChecks": true,
-    "esModuleInterop": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "outDir": "./dist"
+  "private": "true",
+  "name": "shared-ui",
+  "version": "1.0.0",
+  "description": "Shared UI package for our monorepo playground",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc"
   },
-  "include": ["."],
-  "exclude": ["dist", "node_modules", "**/*.spec.ts"]
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^18"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "typescript": "^5"
+  }
 }
-
 ```
 
 ```packages/shared-ui/.eslintrc
 {
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -194,6 +198,7 @@ export * from './button'
     "@typescript-eslint/no-unused-vars": "off"
   }
 }
+
 ```
 
 Make sure that the build command is working: `pnpm --filter shared-ui build`. You should see the output in the `packages/shared-ui/dist`.
@@ -212,3 +217,45 @@ pnpm add shared-ui --filter website --workspace
 - `--filter website`: This option tells pnpm to only operate on the 'website' package. So, it will only add the
 - `shared-ui` package to the 'website' package, not to any other packages in your workspace.
 - `--workspace`: This option tells pnpm to look for packages in the local workspace. So, it will find t
+
+Use the `shared-ui` component.
+
+```apps/website/src/app/page.tsx
+'use client'
+
+import {Button} from 'shared-ui'
+
+export default function Home() {
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+      <Button onClick={() => console.log('Button clicked!')}>Click me 🏔️</Button>
+    </main>
+  )
+}
+
+```
+
+Build the shared-ui package and start your Next.js application.
+
+```bash
+pnpm --filter shared-ui build
+pnpm --filter website dev
+```
+
+1. `pnpm --filter shared-ui build`: This command is building the shared-ui package. The --filter flag is used to specify which package(s) the command should be run on. In this case, it's building the shared-ui package.
+
+2. `pnpm --filter website dev`: This command is starting the development server for the website application. Again, the --filter flag is used to specify that the command should be run on the website package. The dev command is typically used to start a development server, which often includes features like hot-reloading.
+
+3. Recursively run a script in all projects
+
+ometimes you might want to run commands across all the applications and target, let's say, all the build commands and build all the apps and libraries there. To do that, we can use the -r commands, which recursively runs a given command.
+
+https://pnpm.io/cli/run
+
+```bash
+pnpm run -r build
+```
+
+12. Add a second application
+
+It is also important to note that the only package-lock.json file that should exist, exists at the root of the project.
