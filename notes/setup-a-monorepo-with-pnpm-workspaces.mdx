@@ -1,10 +1,14 @@
-# Setting Up a Monorepo with PNPM Workspaces
+## 1. Setting Up a Monorepo with PNPM Workspaces
+
+Make sure you have pnpm installed: https://pnpm.io/installation
 
 Package managers like npm, pnpm, and yarn all have a feature known as "workspaces". This concept allows you to have multiple packages within the same workspace, and you can link them together locally.
 
 This means you can have an application, a library, or even multiple libraries, and you can use them locally and reference them without having to go through a publishing step such as an npm registry. This is exactly what you need if you want to set up a monorepo.
 
-## Monorepo Workspaces
+## 2. Create an empty folder `mkdir monorepo-playground`
+
+## 3. Create a pnpm workspace https://pnpm.io/workspaces
 
 Monorepo workspaces often come in two different structures: app-centric and package-centric.
 
@@ -12,17 +16,7 @@ Monorepo workspaces often come in two different structures: app-centric and pack
 
 2. Package-centric setup: This structure is often used by open-source frameworks like Vue.js, React.js, or Angular. It usually has a folder named "packages" where all the various packages live.
 
-Next, we'll define the structure of our workspace in this file.
-
-## Steps
-
-1. Make sure you have pnpm installed: https://pnpm.io/installation
-
-2. Create an empty folder `mkdir monorepo-playground`
-
-3. Create a pnpm workspace https://pnpm.io/workspaces
-
-4. Create a package.json file with `pnpm init`
+## 4. Create a package.json file with `pnpm init`
 
 ```package.json
 {
@@ -41,14 +35,14 @@ Next, we'll define the structure of our workspace in this file.
 
 This is the package.json for our root-level tooling that we will need in our monorepo set up.
 
-5. Structure your monorepo workspace with an app-centric setup.
+## 5. Structure your monorepo workspace with an app-centric setup.
 
 ```bash
 mkdir apps
 mkdir packages
 ```
 
-6. Create an pnpm workspace for our application
+## 6. Create an pnpm workspace for our application
 
 In order to inform PNPM that we're setting up a workspace and not just using it for package installation, we need to create a pnpm-workspace.yaml file. This file is created at the root of the workspace and defines its structure.
 
@@ -74,7 +68,7 @@ packages:
   - 'packages/*'
 ```
 
-7. Add add Next.js application to a pnpm Workspace Monorepo
+## 7. Add add Next.js application to a pnpm Workspace Monorepo
 
 ```bash
 pnpx create-next-app@latest
@@ -105,7 +99,7 @@ Default options is fine!
 },
 ```
 
-9. Run App Scripts From the Workspace Root
+## 9. Run App Scripts From the Workspace Root
 
 pnpm's `--filter` flag allows you to restrict commands to specific subsets of packages https://pnpm.io/filtering
 
@@ -116,7 +110,7 @@ pnpm --filter website dev
 
 ```
 
-10. Create private libraries in your monorepo
+## 10. Create private libraries in your monorepo
 
 Now create private libraries in your monorepo that you can share between your other packages and applications.
 
@@ -203,7 +197,7 @@ export * from './button'
 
 Make sure that the build command is working: `pnpm --filter shared-ui build`. You should see the output in the `packages/shared-ui/dist`.
 
-11. Use the private libraries in your monorepo
+## 11. Use the private libraries in your monorepo
 
 Adding your local packages as dependencies in a pnpm worksapce mostly works the same way as adding external packages.
 
@@ -256,6 +250,6 @@ https://pnpm.io/cli/run
 pnpm run -r build
 ```
 
-12. Add a second application
+## 12. Add a second application
 
 It is also important to note that the only package-lock.json file that should exist, exists at the root of the project.
