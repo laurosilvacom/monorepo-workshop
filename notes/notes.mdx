@@ -33,3 +33,62 @@ We are going to focus on a barebones setup. We are not going to introduce any co
 Task: Create package.json files and folders following the monorepo structure. Create a pnpm-workspace.yaml outlining where pnpm will look for submodules of our monorepo.
 
 Task: Update the package or submodule package.json. Create a script to run a JavaScript file. Run the script at the root of the project.
+
+# Multiple Package And Recursive Commands
+
+Task: Create a second package and run scripts recursively. Orchestrate commands at the individual level or all of them at once.
+
+# Sharing Code Between Projects
+
+Task: Run code from one package inside another package. Make each project into an ESM project. Install package number 2 into package 1. Run `pnpm install` and take a look at files in the node_modules folder.
+
+Note: ESM stands for ECMAScript Modules. It's a standard for working with modules in JavaScript. Modules are reusable pieces of code that can be exported from one program and imported for use in another program. ESM is the official standard format to package JavaScript code for reuse. Modules are defined using a variety of import and export statements.
+
+This is the core of working in a monorepo!
+
+# Versioning and Workspace Pinning
+
+Task: Change the code of the second package and update how it's being called in the first package. Enable pnpm to always grab the latest version of each package using `workspace:`
+
+https://pnpm.io/workspaces
+
+# Pinning Node and pnpm Versions
+
+Task: Specify the version of Node and pnpm.
+
+https://pnpm.io/package_json
+
+# Installing Packages
+
+Task: Install a third party dependency using pnpm. Not at the root of the workspace but at the specific project. Use the filter command of pnpm. Test that it runs correctly. Figure out if you get access to use this in other projects where the package is not installed. Why didn't it work?
+
+```js
+import snakeCase from 'just-snake-case'
+;`snakeCase('the quick brown fox'); // 'the_quick_brown_fox'`
+```
+
+https://www.npmjs.com/package/just-snake-case
+
+# Updating Packages and Version Syncing
+
+Task: Versions can get complicated. How do we keep our versions up to date in our monorepo? Your task is to implement a script to update all your packages interactively. Update the dependencies to their latest stable version as determined by their latest tags.
+
+https://pnpm.io/cli/update
+
+# Installing Packages Into the Root
+
+Task: Add this package at the root of the project using -w flag. Use this package in your project! You might think that this is a good approach for keeping dependencies up to date. It's not always the right decision to install it in the individual packages. There's no right answer for either installing packages at the root level or individual packages, it depends on your needs.
+
+https://www.npmjs.com/package/just-kebab-case
+
+# Cleaning node_modules
+
+Task: Use the clean script using the find command and delete all node modules recursively.This is usefull if something is wrong and you need to install everything again.
+
+# Understanding dependencies
+
+Task: Use the pnpm list This command will output all the versions of packages that are installed, as well as their dependencies, in a tree-structure. Now use the why command Shows all packages that depend on the specified packag
+
+https://pnpm.io/cli/why
+
+https://pnpm.io/cli/list
