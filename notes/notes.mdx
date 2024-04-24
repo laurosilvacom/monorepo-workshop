@@ -1,32 +1,79 @@
-# pnpm
-
-Why are we choosing this tool? It's an alternative to npm and the monorepo tools are significantly better and more efficient. Some tools have too much bloat! With pnpm, you can orchestrate a monorepo efficiently.
-
-https://pnpm.io/motivation
-
-https://pnpm.io/feature-comparison
-
-https://pnpm.io/installation
-
-let's use pnpm 7 version
-
-This is a course on using pnpm efficently also not just on usign monorepos effectively!
-
 # What Is A Monorepo?
 
 - Repo: Short for repository, typically hosted on platforms like GitHub.
 - Mono: Means 'one'.
 - Monorepo: A single repository that stores all of your code and assets.
 
-Todo: Outline the benefits of monorepos.
+Task: Outline the benefits of monorepos.
 
-Todo: Outline the disavanatages of monorepos.
+Task: Outline the disavanatages of monorepos.
+
+# Introduction to pnpm
+
+pnpm is a fast, efficient, and powerful package manager for JavaScript. It's an excellent alternative to npm, offering better monorepo tools and efficient package management. This section will guide you through the installation and usage of pnpm, helping you orchestrate a monorepo efficiently.
+
+Why are we choosing this tool? It's an alternative to npm and the monorepo tools provided by pnpm are significantly better and more efficient. Some tools have too much bloat! With pnpm, you can orchestrate a monorepo efficiently. This is a workshop on using pnpm efficently as well!
+
+<details>
+<summary>💪 Challenge</summary>
+
+Your task is to install pnpm.
+
+To verify your installation, check the version of pnpm installed. It should be `9` or the latest version.
+
+Can you complete this challenge?
+
+</details>
+
+<details>
+<summary>🧰 Resources</summary>
+
+- [Motivation behind pnpm](https://pnpm.io/motivation)
+- [Feature comparison between npm, yarn, and pnpm](https://pnpm.io/feature-comparison)
+- [Installation guide for pnpm](https://pnpm.io/installation)
+
+</details>
+
+<details>
+<summary>🌱 Solution</summary>
+
+To install pnpm, use the following command:
+
+```bash
+brew install pnpm
+```
+
+After installation, ensure that you're using pnpm `9` or the latest version. You can do this by checking the installed version of pnpm:
+
+```bash
+pnpm --version
+```
+
+The output should be `9.0.6` or a later version.
+
+```bash
+9.0.6
+```
+
+</details>
 
 # Creating a Monorepo
 
 We are going to focus on a barebones setup. We are not going to introduce any compilers, so that we can get the fundamentals down. Then, we can apply these to any project, whether that's a React, Svelte, or Vue framework.
 
 Task: Create package.json files and folders following the monorepo structure. Create a pnpm-workspace.yaml outlining where pnpm will look for submodules of our monorepo.
+
+Let's start by creating an empty folder. Navigate to the desired location and run the command `mkdir monorepo-forest` to create a new folder.
+
+Next, navigate into the newly created folder using `cd project-name`.
+
+Now, initialize a new project with `pnpm init`. This command will create a `package.json` file in your project directory. This file is crucial as it manages the project's dependencies and scripts.
+
+Steps:
+
+1. From the terminal:
+
+````
 
 Task: Update the package or submodule package.json. Create a script to run a JavaScript file. Run the script at the root of the project.
 
@@ -61,7 +108,7 @@ Task: Install a third party dependency using pnpm. Not at the root of the worksp
 ```js
 import snakeCase from 'just-snake-case'
 ;`snakeCase('the quick brown fox'); // 'the_quick_brown_fox'`
-```
+````
 
 https://www.npmjs.com/package/just-snake-case
 
@@ -88,3 +135,4 @@ Task: Use the pnpm list This command will output all the versions of packages th
 https://pnpm.io/cli/why
 
 https://pnpm.io/cli/list
+import { version } from "react"
