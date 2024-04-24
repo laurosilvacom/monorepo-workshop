@@ -1,12 +1,48 @@
 # What Is A Monorepo?
 
-- Repo: Short for repository, typically hosted on platforms like GitHub.
-- Mono: Means 'one'.
-- Monorepo: A single repository that stores all of your code and assets.
+A monorepo, short for monolithic repository, is a software development strategy where code for many projects is stored in the same repository. This approach is in contrast to having one repository per project, which is known as a polyrepo approach.
 
-Task: Outline the benefits of monorepos.
+<details>
+<summary>💪 Challenge</summary>
 
-Task: Outline the disavanatages of monorepos.
+Consider the following questions:
+
+1. What are some potential benefits of orchestrating a monorepo? Think about aspects like code sharing, dependency management, and project synchronization.
+
+2. What advantages might you gain from organizing your code into small, independent, and self-contained components with well-defined boundaries and interfaces? Consider factors like modularity, code maintainability, and testing.
+
+Try to answer these questions based on your understanding of monorepos and code organization.
+
+</details>
+
+<details>
+<summary>🌱 Solution</summary>
+
+### Scaling a Codebase
+
+When it comes to scaling a codebase, companies face a crucial decision. They can either break their codebase into smaller, separate repositories (a strategy known as polyrepo), or they can consolidate their codebase into a single repository (a strategy known as monorepo).
+
+### Polyrepo Strategy
+
+![](../resources/images/001-polyrepo-strategy.png)
+
+In a polyrepo approach, each application or service is maintained in its own separate repository. For instance, your main application would reside in one repository, while any shared services or libraries it uses, such as authentication or design systems, are stored in their respective repositories. These shared components are typically published to a package manager like NPM, allowing them to be easily included and updated across various projects.
+
+> In simple terms, a polyrepo approach means using a separate repository for each team, application, or project, with each one having its own build process.
+
+### Monorepo Strategy
+
+![](../resources/images/002-monorepo-stratery.png)
+
+A monorepo is a single repository that houses the code for multiple projects. These projects are distinct yet interconnected, and they often include related JavaScript or TypeScript packages. The projects within a monorepo can range from low-level utilities to high-level web user interfaces.
+
+> The only difference is where you put your code. It’s probably a good idea to organize your code into small independent and self-contained components with well-defined boundaries and interfaces.
+
+### Monorepo vs Monolith Clarified
+
+A common misconception is that a monorepo and a monolithic application are the same. However, they differ significantly in structure. A monolithic application is essentially one large codebase that encompasses all its projects and components. On the other hand, a monorepo serves as a single repository that contains multiple, independent projects. This setup supports a modular approach to development, allowing each project to be developed separately yet still under the umbrella of a single version control system.
+
+</details>
 
 # Introduction to pnpm
 
@@ -31,6 +67,7 @@ Your task is to install pnpm. To verify your installation, check the version of 
 </details>
 
 <details>
+
 <summary>🌱 Solution</summary>
 
 To install pnpm, use the following command:
@@ -69,8 +106,6 @@ Steps:
 
 1. From the terminal:
 
-````
-
 Task: Update the package or submodule package.json. Create a script to run a JavaScript file. Run the script at the root of the project.
 
 # Multiple Package And Recursive Commands
@@ -104,7 +139,7 @@ Task: Install a third party dependency using pnpm. Not at the root of the worksp
 ```js
 import snakeCase from 'just-snake-case'
 ;`snakeCase('the quick brown fox'); // 'the_quick_brown_fox'`
-````
+```
 
 https://www.npmjs.com/package/just-snake-case
 
