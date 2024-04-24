@@ -1,10 +1,10 @@
 {
-  "name": "monorepo-forest",
+  "name": "@forestpark/firelane",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:firelane": "pnpm -r --filter @forestpark/firelane run start"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",
