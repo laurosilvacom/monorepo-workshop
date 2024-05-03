@@ -1,14 +1,26 @@
-# monorepo-workshop 🌳
+# Advanced Monorepo Techniques 🌳
 
-Welcome to the Monorepo Workshop! This workshop is your guide to understanding and implementing monorepos at any scale.
+Welcome! This workshop is designed to navigate you through the complexities of setting up and managing monorepos within the JavaScript and TypeScript ecosystem.
 
-We'll explore the advantages of using a monorepo structure, such as improved code sharing, simplified dependency management, and increased codebase resilience. You'll learn how to use pnpm, an efficient package manager, and Turborepo, a tool that helps manage monorepos, optimize build systems, and enhance CI/CD processes.
+In this workshop, we'll delve into the benefits of a monorepo structure, including efficient code sharing, streamlined dependency management, and robust codebase resilience. We'll also introduce you to pnpm, a high-performance package manager, and Turborepo, a powerful tool for managing monorepos, optimizing build systems, and enhancing CI/CD workflows.
 
-Join us as we navigate the world of monorepos, making your development process more streamlined and efficient.
+Embark on this journey with us as we traverse the world of monorepos, aiming to make your development process more efficient and effective.
 
 ## System Requirements
 
+You'll need:
+
+- git version 2.39.0 or later
+- Node.js version 21.7.1 or later
+- pnpm version 9.0.6 or later
+
 ## Setup
+
+1. **Clone the Workshop Repository**: Clone the workshop repository from GitHub to your local machine. You can do this by running `git clone https://github.com/laurosilvacom/monorepo-workshop` in your terminal.
+
+2. **Install Dependencies**: Navigate to the cloned repository's directory and run `pnpm install` to install the necessary dependencies.
+
+3. **Check Your Setup**: Run a test command (like `pnpm test`) to ensure everything is set up correctly. If the command runs without errors, you're good to go!
 
 ## Outline
 
