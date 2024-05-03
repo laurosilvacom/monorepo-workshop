@@ -8,8 +8,6 @@ Embark on this journey with us as we traverse the world of monorepos, aiming to 
 
 ## System Requirements
 
-You'll need:
-
 - git version `2.39.0` or later
 - Node.js version `21.7.1` or later
 - pnpm version `9.0.6` or later
@@ -57,3 +55,14 @@ This workshop is designed to help you learn by doing. It's structured around a s
 4. **Elaboration and Feedback ✍️**: After each exercise, you'll find an Elaboration and Feedback link. It's crucial to fill this out, focusing particularly on the elaboration part. Here, you'll write down the core concepts you've learned from the exercise. This practice reinforces your new knowledge and helps you remember it more effectively.
 
 By following these steps, you'll gain a deep and practical understanding of the topics covered in this workshop.
+
+## Workshop Schedule
+
+| Time        | Activity          | Length |
+| ----------- | ----------------- | ------ |
+| 9:00-10:00  | Teaching Block #1 | 1hr    |
+| 10:00-10:15 | Break             | 15min  |
+| 10:15-11:15 | Teaching Block #2 | 1hr    |
+| 11:15-11:30 | Break             | 15min  |
+| 11:30-12:30 | Teaching Block #3 | 1hr    |
+| 12:30-1:00  | End               |        |
