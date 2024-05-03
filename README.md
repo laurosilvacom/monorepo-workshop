@@ -6,6 +6,10 @@ We'll explore the advantages of using a monorepo structure, such as improved cod
 
 Join us as we navigate the world of monorepos, making your development process more streamlined and efficient.
 
+## System Requirements
+
+## Setup
+
 ## Outline
 
 1. Monorepos and Forests
@@ -34,7 +38,7 @@ This workshop is designed to help you learn by doing. It's structured around a s
 
 1. **Introduction ⛺**: Each lesson begins with an introduction that sets the context. This will give you a clear understanding of what you'll be learning and why it's important.
 
-2. **Exercise and Attempt 🏔️**: After the introduction, you'll be presented with one or more exercises. These are practical tasks that you need to attempt to solve to the best of your ability. Remember, learning is a process and it's okay to struggle a bit. You might even need to do some Googling, and that's perfectly fine!
+2. **Exercise and Attempt 🏔️**: After the introduction, you'll encounter one or more exercises. These are designed not necessarily for you to complete, but to spark your curiosity and formulate the right questions to ask me as I walk through the material. It's perfectly fine to struggle a bit or even do some Googling.
 
 3. **Solution 🚩**: After you've attempted the exercises, I'll walk you through the solutions. This step-by-step walkthrough will help you understand the correct approach and the reasoning behind it.
 
