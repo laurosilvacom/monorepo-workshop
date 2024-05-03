@@ -10,9 +10,9 @@ Embark on this journey with us as we traverse the world of monorepos, aiming to 
 
 You'll need:
 
-- git version 2.39.0 or later
-- Node.js version 21.7.1 or later
-- pnpm version 9.0.6 or later
+- git version `2.39.0` or later
+- Node.js version `21.7.1` or later
+- pnpm version `9.0.6` or later
 
 ## Setup
 
