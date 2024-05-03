@@ -1,6 +1,6 @@
 # Advanced Monorepo Techniques 🌳
 
-[Teacher's Notes](https://github.com/laurosilvacom/monorepo-workshop/blob/main/notes/teacher-notes.mdx).
+[Teacher's Notes](https://github.com/laurosilvacom/monorepo-workshop/blob/main/notes/teacher-notes.mdx)
 
 Welcome! This workshop is designed to navigate you through the complexities of setting up and managing monorepos within the JavaScript and TypeScript ecosystem.
 
