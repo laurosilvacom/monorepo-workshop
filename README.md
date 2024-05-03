@@ -1,5 +1,7 @@
 # Advanced Monorepo Techniques 🌳
 
+[Teacher's Notes](https://github.com/laurosilvacom/monorepo-workshop/blob/main/notes/teacher-notes.mdx).
+
 Welcome! This workshop is designed to navigate you through the complexities of setting up and managing monorepos within the JavaScript and TypeScript ecosystem.
 
 In this workshop, we'll delve into the benefits of a monorepo structure, including efficient code sharing, streamlined dependency management, and robust codebase resilience. We'll also introduce you to pnpm, a high-performance package manager, and Turborepo, a powerful tool for managing monorepos, optimizing build systems, and enhancing CI/CD workflows.
