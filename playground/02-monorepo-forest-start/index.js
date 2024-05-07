@@ -1,5 +1,5 @@
 function calculateLeaves(branchCount) {
-  return branchCount * 50
+  return branchCount * 70
 }
 
 let branchCount = 100 // number of branches

@@ -18,7 +18,7 @@ Monorepos and forests share a striking similarity!
 
 Join me as we traverse the forest of monorepos, discovering its interconnected pathways and hidden treasures!
 
-# Monorepo Architecture
+# 01. Monorepo Architecture
 
 A monorepo, short for monolithic repository, is a software development strategy where code for many projects is stored in the same repository. This approach is in contrast to having one repository per project, which is known as a polyrepo approach.
 
@@ -62,7 +62,7 @@ A common misconception is that a monorepo and a monolithic application are the s
 
 </details>
 
-# Introduction to pnpm
+# 02. Introduction to pnpm
 
 pnpm is a fast, efficient, and powerful package manager for JavaScript. It's an excellent alternative to npm, offering better monorepo tools and efficient package management. This section will guide you through the installation and usage of pnpm, helping you orchestrate a monorepo efficiently.
 
@@ -107,16 +107,16 @@ The output should be `9.0.6` or a later version.
 
 </details>
 
-# Creating a Monorepo
+# 02 Creating a Monorepo
 
 We are going to focus on a barebones setup. We are not going to introduce any compilers, so that we can get the fundamentals down. Then, we can apply these to any project, whether that's a React, Svelte, or Vue framework.
 
 <details>
 <summary>💪 Challenge</summary>
 
-1. Create package.json files and folders following the monorepo structure off `apps` and `packages`. Create a `pnpm-workspace.yaml` outlining where pnpm will look for submodules of our monorepo.
+1. Start by creating a `packages` directory. Inside this directory, make a new package called `firelane-one`. Then, at your project's root, set up a pnpm workspace.
 
-2. Task: Update the package `package.json`. Create a script to run a JavaScript file. Run the script at the root of the project.
+2. Inside the `firelane-one` package, add the `index.js` file that includes the `calculateLeaves` function.Then, create a script at the project's root that can execute a JavaScript file.
 
 </details>
 

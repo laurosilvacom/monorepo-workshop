@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start:firelane": "pnpm -r --filter @forestpark/firelane run start"
+    "firelane:start": "pnpm -r --filter @forestpark/firelane-one run start"
   },
   "keywords": [],
   "author": "",
