@@ -71,7 +71,7 @@ Why are we choosing this tool? It's an alternative to npm and the monorepo tools
 <details>
 <summary>💪 Challenge</summary>
 
-1. Your task is to install pnpm. To verify your installation, check the version of pnpm installed. It should be `9` or the latest version. Can you complete this challenge?
+1. Your challange is to install pnpm. To verify your installation, check the version of pnpm installed. It should be `9` or the latest version.
 
 </details>
 
@@ -114,22 +114,26 @@ We are going to focus on a barebones setup. We are not going to introduce any co
 <details>
 <summary>💪 Challenge</summary>
 
-1. Start by creating a `packages` directory. Inside this directory, make a new package called `firelane-one`. Then, at your project's root, set up a pnpm workspace.
+Your task is to set up a basic monorepo structure and create a script to run a JavaScript file. Here are the steps you need to follow:
 
-2. Inside the `firelane-one` package, add the `index.js` file that includes the `calculateLeaves` function.Then, create a script at the project's root that can execute a JavaScript file.
+1. Your first task is to create a new directory named packages. Within this directory, your challenge is to create a new package. Name this package firelane-one. Once you've done this, go to the root of your project and set up a pnpm workspace.
+
+2. Now, navigate to the firelane-one package you just created. Here, your challenge is to add a new file named index.js. This file should include a function named calculateLeaves. After you've done this, go back to the root of your project. Here, your task is to create a script that can execute a JavaScript file.
 
 </details>
 
 <details>
 <summary>🧰 Resources</summary>
 
-https://pnpm.io/workspaces
-https://pnpm.io/cli/init
+- [pnpm workspaces](https://pnpm.io/workspaces): this link provides detailed information about how to use pnpm workspaces in a monorepo setup.
+
+- [pnpm init](https://pnpm.io/cli/init): this link explains how to initialize a new project with pnpm, which is a crucial step in setting up a monorepo.
 
 </details>
 
 <details>
 <summary>🌱 Solution</summary>
+
 Let's start by creating an empty folder. Navigate to the desired location and run the command `mkdir monorepo-forest` to create a new folder.
 
 Next, navigate into the newly created folder using `cd project-name`. Now, initialize a new project with `pnpm init`. This command will create a `package.json` file in your project directory. This file is crucial as it manages the project's dependencies and scripts.
