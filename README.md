@@ -24,20 +24,20 @@ Embark on this journey with us as we traverse the world of monorepos, aiming to 
 
 ## Outline
 
-**1. Monorepos and Forests
+1. Monorepos and Forests
 2. Monorepo Architecture
 3. Introduction to pnpm
 4. Creating a Monorepo
 5. Multiple Package And Recursive Commands
 6. Sharing Code Between Projects
-7. Versioning and Workspace Pinning**
+7. Versioning and Workspace Pinning
 8. Pinning Node and pnpm Versions
 9. Installing Packages
 10. Updating Packages and Version Syncing
 11. Installing Packages Into the Root
 12. Cleaning node_modules
 13. Understanding dependencies
-**14. Implementing Turborepo in Monorepo Projects
+14. Implementing Turborepo in Monorepo Projects
 15. Exploring Turborepo**
 16. Setting Up Turborepo
 17. Integrating with CI/CD and Remote Caching
