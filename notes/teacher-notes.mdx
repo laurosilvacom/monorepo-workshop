@@ -114,11 +114,13 @@ We are going to focus on a barebones setup. We are not going to introduce any co
 <details>
 <summary>💪 Challenge</summary>
 
-Your task is to set up a basic monorepo structure and create a script to run a JavaScript file. Here are the steps you need to follow:
+Your task is to set up a monorepo using pnpm workspaces. Here's what you need to do:
 
-1. Your first task is to create a new directory named packages. Within this directory, your challenge is to create a new package. Name this package firelane-one. Once you've done this, go to the root of your project and set up a pnpm workspace.
+- Start by navigating to the 01-monorepo-forest-start directory. Inside this directory, create a new folder and name it packages.
+- Next, go inside the packages folder. Here, you need to initialize a new package. Let's name this package firelane-one.
+- Inside the firelane-one package, add the `index.js` file.
 
-2. Now, navigate to the firelane-one package you just created. Here, your challenge is to add a new file named index.js. This file should include a function named calculateLeaves. After you've done this, go back to the root of your project. Here, your task is to create a script that can execute a JavaScript file.
+Once you've completed these steps, your challenge is to ensure that you're able to execute the @forestpark/firelane-one package from the root of the monorepo using pnpm.
 
 </details>
 
@@ -134,11 +136,69 @@ Your task is to set up a basic monorepo structure and create a script to run a J
 <details>
 <summary>🌱 Solution</summary>
 
-Let's start by creating an empty folder. Navigate to the desired location and run the command `mkdir monorepo-forest` to create a new folder.
+To set up a monorepo using pnpm workspaces, you need to follow these steps:
 
-Next, navigate into the newly created folder using `cd project-name`. Now, initialize a new project with `pnpm init`. This command will create a `package.json` file in your project directory. This file is crucial as it manages the project's dependencies and scripts.
+1. Navigate to the 01-start directory and create a new folder named packages:
 
-Next, cratea folder named `packages`
+```
+cd 01-start
+mkdir packages
+```
+
+2. Move into the packages folder and create a new package named firelane-one. Initialize this new package using pnpm init -y:
+
+```
+cd packages
+mkdir firelane-one
+cd firelane-one
+pnpm init -y
+```
+
+The -y flag in pnpm init -y automatically fills in the default information in the package.json file.
+
+3. Inside the firelane-one package, create a new file named index.js:
+
+```
+touch index.js
+```
+
+4. In the package.json file of firelane-one, define the name of the package as "@forestpark/firelane-one". It should look like this:
+
+```json
+{
+  "name": "@forestpark/firelane-one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+The package.json file holds various metadata relevant to the project. The name property defines the name of the package, and the scripts property contains scripts that are run at various times in the lifecycle of your package.
+
+5. Create a pnpm-workspace.yaml file at the root directory of 01-start. This file tells pnpm that you want to use workspace functionality.
+
+```yaml
+packages:
+  - 'packages/**'
+```
+
+The line 'packages/**' tells pnpm to look for sub-modules inside the packages folder. The ** is a wildcard that matches any file or directory.
+
+6. Update the scripts in your package.json file to include a command to start the @forestpark/firelane-one package:
+
+```
+"scripts": {
+  "firelane:start": "pnpm -r --filter @forestpark/firelane-one run start"
+}
+```
+
+This script runs the start command defined in the package.json file of the @forestpark/firelane-one package. The -r flag tells pnpm to run the command recursively in every package in the monorepo, and the --filter @forestpark/firelane-one option limits the scope of the command to the @forestpark/firelane-one package.
 
 </details>
 
