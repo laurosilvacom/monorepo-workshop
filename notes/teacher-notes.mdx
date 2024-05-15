@@ -193,7 +193,7 @@ The line 'packages/**' tells pnpm to look for sub-modules inside the packages fo
 
 ```
 "scripts": {
-  "firelane:start": "pnpm -r --filter @forestpark/firelane-one run start"
+  "firelane-one:start": "pnpm -r --filter @forestpark/firelane-one run start"
 }
 ```
 
@@ -203,7 +203,147 @@ This script runs the start command defined in the package.json file of the @fore
 
 ## 04. Multiple Package And Recursive Commands
 
-Task: Create a second package and run scripts recursively. Orchestrate commands at the individual level or all of them at once.
+## 04. Multiple Package And Recursive Commands
+
+In a monorepo, managing multiple interconnected packages efficiently is crucial. One powerful tool that greatly enhances this process is the ability to execute commands recursively. This feature allows you to manage multiple packages as if they were a single entity, while still maintaining the independence and isolation of individual packages.
+
+Running packages recursively in a monorepo is important for several reasons:
+
+1. **Efficiency**: Executing commands across multiple packages with a single command saves time and reduces the potential for errors. Instead of manually running the same command for each package, you can do it all at once, significantly improving your workflow efficiency.
+
+2. **Consistency**: By running the same command across all packages, you ensure that all parts of your project are in sync. This is particularly useful for tasks like testing or building, where consistency across packages is crucial. It ensures that all packages are tested or built with the same parameters, reducing inconsistencies and potential bugs.
+
+3. **Flexibility**: Recursive commands can be filtered to target specific packages, giving you fine-grained control over which parts of your project are affected by a command. This is particularly useful when you want to run a command only on a subset of packages, allowing for more targeted and efficient operations.
+
+In this section, we will explore how to run multiple packages and recursive commands in a monorepo. We will learn how to leverage these features to improve our monorepo management and make our development process more efficient and effective.
+
+<details>
+<summary>💪 Challenge</summary>
+
+Your task is to create a second package in your monorepo and learn how to run scripts recursively.
+
+1. Create a second package in your monorepo.
+
+2. Add this function as the new package called `firelane-two`:
+
+```js
+function calculateHikingTime(trailLength, averageSpeed) {
+  return trailLength / averageSpeed
+}
+
+let trailLength = 30 // length of the trail in miles
+let averageSpeed = 3 // average hiking speed in miles per hour
+
+console.log(
+  `It would take approximately: `,
+  calculateHikingTime(trailLength, averageSpeed),
+  ' hours to hike this trail in Forest Park 🥾'
+)
+```
+
+3. Run the package at the individual package level.
+
+4. Run the package at the root of the monorepo recursively.
+
+</details>
+
+<details>
+
+<summary>🧰 Resources</summary>
+
+- https://pnpm.io/cli/recursive - Understand how to run commands recursively in a monorepo.
+
+</details>
+
+<details>
+
+<summary>🌱 Solution </summary>
+
+To create a second package in your monorepo, you'll first need to duplicate the `firelane-one` folder. Rename this duplicate to `firelane-two`. This gives you a new, separate package to work with.
+
+Next, you'll want to ensure that `firelane-two` is running completely different code from `firelane-one`. To do this, update the `index.js` file in `firelane-two` with the `calculateHikingTime` function.
+
+```js
+function calculateHikingTime(trailLength, averageSpeed) {
+  return trailLength / averageSpeed
+}
+
+let trailLength = 30 // length of the trail in miles
+let averageSpeed = 3 // average hiking speed in miles per hour
+
+console.log(
+  `It would take approximately: `,
+  calculateHikingTime(trailLength, averageSpeed),
+  ' hours to hike this trail in Forest Park 🥾'
+)
+```
+
+The `package.json` file in `firelane-two` needs to reflect the correct package name. Update the name in this file to `@forestpark/firelane-two`.
+
+Finally, to run the second command from the root repository, you'll use the same `--filter` command as before. However, you need to update the name of the script and the package that the script is running. The updated script in the `package.json` file should look like this:
+
+```json
+{
+  "name": "monorepo-forest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "firelane-one:start": "pnpm -r --filter @forestpark/firelane-one run start",
+    "firelane-two:start": "pnpm -r --filter @forestpark/firelane-two run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+If we execute these two command from the root directory of the monorepo, you will note that `pnpm run firelane-one:start` and `pnpm run firelane-two:start` excute two different packages.
+
+The next step is to create a command inside `package.json` to run both packages recursively. You will do this by creating a third script using the `-r` flag provided by pnpm.
+
+> The `-r` flag stands for "recursive". In the context of a monorepo, running a command recursively means that the command will be executed in each package that exists in the monorepo. This is a powerful feature that allows you to manage multiple packages as if they were a single entity, while still maintaining the independence and isolation of individual packages.
+
+Your script should look like this, with the new start script for recurviely running all the packages:
+
+```json
+{
+  "name": "monorepo-forest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "firelane-one:start": "pnpm -r --filter @forestpark/firelane-one run start",
+    "firelane-two:start": "pnpm -r --filter @forestpark/firelane-two run start",
+    "start": "pnpm -r run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+```
+
+When you execute the `start` script from the root directory of the monorepo, you should see both functions executing. You can do this by running the command `pnpm run start`.
+
+This command will run the `start` script in each package that exists in the monorepo. As a result, you will see the output from both the `firelane-one` and `firelane-two` packages.
+
+```bash
+> monorepo-forest@1.0.0 start /Users/laurosilvacom/1-projects/monorepo-workshop/playground/02-start
+> pnpm -r run start
+
+Scope: 2 of 3 workspace projects
+packages/firelane-one start$ node index.js
+│ The tree has approximately:  7000  leaves 🍃
+└─ Done in 79ms
+packages/firelane-two start$ node index.js
+│ It would take approximately:  10  hours to hike this trail in Forest Park 🥾
+└─ Done in 77ms
+laurosilvacom@laurosilvacom 02-start %
+```
+
+This demonstrates the power of running commands recursively in a monorepo, allowing you to manage multiple packages as if they were a single entity.
+
+</details>
 
 # Sharing Code Between Projects
 
