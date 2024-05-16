@@ -1,4 +1,4 @@
-## 00. Interconnected Pathways Between Monorepos and Forests 🌳
+## 00. Monorepos and Forests 🌳
 
 As a trail runner who loves exploring Forest Park in Portland, I've found a compelling metaphor for understanding Monorepos - the forest itself!
 
@@ -16,7 +16,7 @@ Join me as we traverse the forest of monorepos, discovering its interconnected p
 
 </details>
 
-## 01. Understanding Monorepo Architecture
+## 01. Monorepo Architecture
 
 A monorepo, short for monolithic repository, is a software development strategy where code for many projects is stored in the same repository. This approach is in contrast to having one repository per project, which is known as a polyrepo approach.
 
@@ -60,7 +60,7 @@ A common misconception is that a monorepo and a monolithic application are the s
 
 </details>
 
-## 02. Exploring pnpm: A Powerful Tool for Monorepo Management
+## 02. Introduction to PNPM
 
 pnpm is a fast, efficient, and powerful package manager for JavaScript. It's an excellent alternative to npm, offering better monorepo tools and efficient package management. This section will guide you through the installation and usage of pnpm, helping you orchestrate a monorepo efficiently.
 
@@ -105,7 +105,7 @@ The output should be `9.0.6` or a later version.
 
 </details>
 
-## 03. Setting the Foundation for a Monorepo
+## 03. Assembling a Monorepo from Scratch
 
 In this section, we'll concentrate on setting up a basic monorepo structure. We'll deliberately avoid introducing any compilers or tooling at this point, allowing us to focus on understanding the core principles of orchestrating a monorepo from the ground up. Once we've grasped these fundamental concepts, we'll be able to apply them to any project, irrespective of the framework used, be it React, Svelte, Vue, or others.
 
@@ -139,14 +139,14 @@ To set up a monorepo using pnpm workspaces, you need to follow these steps:
 
 1. Navigate to the 01-start directory and create a new folder named packages:
 
-```
+```bash
 cd 01-start
 mkdir packages
 ```
 
 2. Move into the packages folder and create a new package named firelane-one. Initialize this new package using pnpm init -y:
 
-```
+```bash
 cd packages
 mkdir firelane-one
 cd firelane-one
@@ -191,7 +191,7 @@ The line 'packages/**' tells pnpm to look for sub-modules inside the packages fo
 
 6. Update the scripts in your package.json file to include a command to start the @forestpark/firelane-one package:
 
-```
+```json
 "scripts": {
   "firelane-one:start": "pnpm -r --filter @forestpark/firelane-one run start"
 }
