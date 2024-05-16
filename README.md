@@ -24,25 +24,27 @@ Embark on this journey with us as we traverse the world of monorepos, aiming to 
 
 ## Outline
 
-1. Monorepos and Forests
-2. Monorepo Architecture
-3. Introduction to pnpm
-4. Creating a Monorepo
-5. Multiple Package And Recursive Commands
-6. Sharing Code Between Projects
-7. Versioning and Workspace Pinning
-8. Pinning Node and pnpm Versions
-9. Installing Packages
-10. Updating Packages and Version Syncing
-11. Installing Packages Into the Root
-12. Cleaning node_modules
-13. Understanding dependencies
-14. Implementing Turborepo in Monorepo Projects
-15. Exploring Turborepo**
-16. Setting Up Turborepo
-17. Integrating with CI/CD and Remote Caching
-18. Collaborative Development with Turborepo
-19. Advanced Turborepo Techniques
+✅: Teacher's notes are completed.
+🏗️: Teacher's notes are in progress.
+
+1. Monorepos and Forests ✅
+2. Monorepo Architecture ✅
+3. Introduction to PNPM ✅
+4. Managing Multiple Packages and Executing Recursive Commands in a Monorepo ✅
+5. Sharing Code Across Projects in a Monorepo ✅
+6. Versioning and Workspace Pinning 🏗️
+7. Pinning Node and pnpm Versions 🏗️
+8. Installing Packages 🏗️
+9. Updating Packages and Version Syncing 🏗️
+10. Installing Packages Into the Root 🏗️
+11. Cleaning node_modules 🏗️
+12. Understanding dependencies 🏗️
+13. Implementing Turborepo in Monorepo Projects 🏗️
+14. Exploring Turborepo 🏗️
+15. Setting Up Turborepo 🏗️
+16. Integrating with CI/CD and Remote Caching 🏗️
+17. Collaborative Development with Turborepo 🏗️
+18. Advanced Turborepo Techniques 🏗️
 
 ## Exercise-Driven Workshop
 
