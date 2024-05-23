@@ -17,9 +17,7 @@ Embark on this journey with us as we traverse the world of monorepos, aiming to 
 ## Setup
 
 1. **Clone the Workshop Repository**: Clone the workshop repository from GitHub to your local machine. You can do this by running `git clone https://github.com/laurosilvacom/monorepo-workshop` in your terminal.
-
 2. **Install Dependencies**: Navigate to the cloned repository's directory and run `pnpm install` to install the necessary dependencies.
-
 3. **Check Your Setup**: Run a test command (like `pnpm test`) to ensure everything is set up correctly. If the command runs without errors, you're good to go!
 
 ## Outline
@@ -34,7 +32,7 @@ Progress: ![28%](https://progress-bar.dev/28)
 3. Introduction to PNPM ✅
 4. Managing Multiple Packages and Executing Recursive Commands in a Monorepo ✅
 5. Sharing Code Across Projects in a Monorepo ✅
-6. Versioning and Workspace Pinning 🏗️
+6. Versioning and Workspace Pinning ✅
 7. Pinning Node and pnpm Versions 🏗️
 8. Installing Packages 🏗️
 9. Updating Packages and Version Syncing 🏗️
