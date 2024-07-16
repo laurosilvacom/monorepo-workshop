@@ -49,17 +49,17 @@ Inside `firelane-one`, add the dependency:
 
 ```json
  "dependencies": {
-    "@forestpark/firelane-one": "1.0.0"
+    "@forestpark/firelane-two": "workspace:*"
   },
 ```
 
 > We can specify the version directly.
 
-You should be able to use `firelane-two` inside the same `index.js` file. You will need to adjust the code to be exported from `firelane-two`:
+You should be able to use `firelane-two` inside the `firelane-one` `index.js` file. You will need to adjust the code to be exported from `firelane-two`:
 
 ```js
-export function calculateLeaves(branchCount) {
-  return branchCount * 70
+export function calculateHikingTime(trailLength, averageSpeed) {
+  return trailLength / averageSpeed
 }
 ```
 
@@ -74,17 +74,17 @@ When you run `pnpm install`, it creates `node_modules` directories at the root a
 4. Import our installed package.
 
 ```js
-import {calculateLeaves} from '@forestpark/firelane-one'
+import {calculateHikingTime} from '@forestpark/firelane-two'
 
-calculateLeaves()
+calculateHikingTime()
 ```
 
 This treats it as any other dependency.
 
-5. Run `firelane-two` from the root:
+5. Run `firelane-one` from the root:
 
 ```
-pnpm -r --filter @forestpark/firelane-two run start
+pnpm -r --filter @forestpark/firelane-one run start
 ```
 
 > We are now officially able to work in two projects at once! We can use code from one project inside another. This is the core of working in a monorepo. 😄
