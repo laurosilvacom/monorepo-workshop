@@ -14,29 +14,7 @@ In this workshop, we'll delve into the benefits of a monorepo structure, includi
 
 1. **Clone the Workshop Repository**: Clone the workshop repository from GitHub to your local machine. You can do this by running `git clone https://github.com/laurosilvacom/monorepo-workshop` in your terminal.
 
-## Outline
 
-- ✅: Teacher's notes are completed.
-- 🏗️: Teacher's notes are in progress.
-
-1. Monorepos and Forests ✅
-2. Monorepo Architecture ✅
-3. Introduction to PNPM ✅
-4. Managing Multiple Packages and Executing Recursive Commands in a Monorepo ✅
-5. Sharing Code Across Projects in a Monorepo ✅
-6. Versioning and Workspace Pinning ✅
-7. Pinning Node and pnpm Versions 🏗️
-8. Installing Packages 🏗️
-9. Updating Packages and Version Syncing 🏗️
-10. Installing Packages Into the Root 🏗️
-11. Cleaning node_modules 🏗️
-12. Understanding dependencies 🏗️
-13. Implementing Turborepo in Monorepo Projects 🏗️
-14. Exploring Turborepo 🏗️
-15. Setting Up Turborepo 🏗️
-16. Integrating with CI/CD and Remote Caching 🏗️
-17. Collaborative Development with Turborepo 🏗️
-18. Advanced Turborepo Techniques 🏗️
 
 ## Exercise-Driven Workshop
 
