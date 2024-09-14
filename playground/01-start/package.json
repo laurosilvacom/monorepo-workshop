@@ -1,0 +1,12 @@
+{
+  "name": "01-start",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "firelane-one:start": "pnpm -r --filter @forestpark/firelane-one run start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
